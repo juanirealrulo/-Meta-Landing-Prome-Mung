@@ -49,7 +49,6 @@ p:last-child{margin-bottom:0;}
   stroke-linecap:round;
   stroke-linejoin:round;
 }
-.ico--grande{width:3.25rem;height:3.25rem;padding:.625rem;}
 
 /* ---------- Indicador de avance ---------- */
 .progreso{
@@ -174,7 +173,6 @@ h3{
 /* ---------- Bloques anchos ----------
    Sin las fotos laterales, el bloque oscuro y el gráfico se estiran a
    toda la columna. La medida de lectura la sostiene el párrafo, no la caja. */
-.par__cuerpo{display:grid;gap:2.5rem;align-content:start;}
 
 
 /* ---------- Gráfico del ciclo ---------- */
@@ -227,7 +225,6 @@ h3{
    Abajo de 40rem los ítems van apilados y el tile quedaba solo en su
    renglón con todo el ancho vacío a la derecha. Acá el título sube al
    lado del ícono y el texto corre debajo a todo el ancho. */
-.trio__item,
 .tarjeta,
 .flujo__paso{
   display:grid;
@@ -235,13 +232,10 @@ h3{
   column-gap:1rem;
   align-items:center;
 }
-.trio__item .ico,
 .tarjeta .ico,
 .flujo__paso .ico{grid-column:1;grid-row:1;margin:0;}
-.trio__item h3,
 .tarjeta h3,
 .flujo__paso h3{grid-column:2;grid-row:1;margin:0;}
-.trio__item p,
 .tarjeta p,
 .flujo__paso p{grid-column:1 / -1;margin:.75rem 0 0;}
 
@@ -342,28 +336,6 @@ h3{
   line-height:1.55;
   margin:0;
 }
-
-/* ---------- Destacado ---------- */
-.destacado{
-  margin:3rem 0 0;
-  padding:1.625rem 1.375rem;
-  background:var(--negro);
-  color:var(--hueso);
-}
-.destacado h3{color:var(--verde-vivo);}
-.destacado p{font-weight:300;margin:0 0 .875rem;max-width:62ch;}
-.destacado p:last-child{margin-bottom:0;}
-
-/* ---------- Trío raíces, granos, renta ---------- */
-.trio{display:grid;gap:0;}
-.trio__item{
-  padding:1.5rem 0;
-  border-top:1px solid rgba(29,35,28,.22);
-}
-.trio__item:last-child{border-bottom:1px solid rgba(29,35,28,.22);}
-.trio__item .ico{margin:0 0 .75rem;}
-.trio__item h3{color:var(--verde);margin-bottom:.375rem;}
-.trio__item p{font-weight:300;margin:0;max-width:44ch;}
 
 /* ---------- Comparador de programas ---------- */
 .seccion--comparador{background:var(--negro);color:var(--hueso);}
@@ -539,23 +511,16 @@ h3{
 }
 
 @media (min-width:40rem){
-  .trio__item,
   .tarjeta,
   .flujo__paso{display:block;}
-  .trio__item .ico,
   .tarjeta .ico{margin:0 0 .875rem;}
   .flujo__paso .ico{margin:0 0 .875rem;}
-  .trio__item h3,
   .tarjeta h3{margin:0 0 .375rem;}
   .flujo__paso h3{margin:0 0 .375rem;}
-  .trio__item p,
   .tarjeta p,
   .flujo__paso p{margin:0;}
   .tarjetas{grid-template-columns:repeat(3,1fr);gap:1rem;}
   .tarjetas--dos{grid-template-columns:repeat(2,1fr);}
-  .trio{grid-template-columns:repeat(3,1fr);gap:1.75rem;}
-  .trio__item{border-top:2px solid var(--verde);padding:1.125rem 0 0;}
-  .trio__item:last-child{border-bottom:0;}
 }
 
 @media (min-width:48rem){
@@ -588,8 +553,6 @@ h3{
   .seccion{padding:5rem 0;}
   h2{font-size:2.125rem;}
   .seccion--cierre h2{font-size:2.625rem;}
-  .destacado{padding:2rem 2.25rem;}
-  .trio{gap:2.5rem;}
 }
 
 @media (min-width:60rem){
