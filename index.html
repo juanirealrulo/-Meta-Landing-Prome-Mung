@@ -52,6 +52,10 @@
       <path d="M12 12l-8 -4.5" />
       <path d="M16 5.25l-8 4.5" />
     </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+      <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+    </symbol>
     <symbol id="i-camion" viewBox="0 0 24 24">
       <path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
       <path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -65,7 +69,7 @@
 
 <header class="portada">
   <div class="col">
-    <p class="marca">Prome AgroNegocios<span>Chaco · Formosa · Corrientes</span></p>
+    <p class="marca">Prome AgroNegocios<span>Chaco · Formosa · Corrientes · Misiones</span></p>
     <h1>Ese lote sin asignar<br>todavía puede dar una campaña</h1>
     <p class="bajada">El poroto mung se siembra ahora, se cosecha en 90 días y deja el lote libre para lo de verano.</p>
     <a class="boton" href="#" data-wa>Escribinos por WhatsApp</a>
@@ -126,7 +130,7 @@
 
       <h3 class="sub">Entra en tu planteo si</h3>
       <ul class="lista lista--linea">
-        <li>Estás en Chaco, Formosa o Corrientes</li>
+        <li>Estás en Chaco, Formosa, Corrientes o Misiones</li>
         <li>Tenés humedad en el perfil, sin necesidad de que esté tan cargado como para un cultivo largo</li>
         <li>Se te pasó la fecha del girasol o te quedó un lote libre, y la ventana de primavera sigue abierta en tu zona</li>
       </ul>
@@ -156,13 +160,15 @@
       </ol>
 
       <div class="persona">
-        <div class="persona__foto" role="img" aria-label="Martín Recalde"></div>
-        <div class="persona__texto">
-          <p class="persona__intro">El que aparece en el video es el que te contesta.</p>
-          <h3>Martín Recalde</h3>
-          <p class="persona__rol">Ingeniero agrónomo. Socio de Prome AgroNegocios y de la Regional Aapresid Montecristo.</p>
-          <p>Hace diez años que Prome lleva cultivos de especialidad a zonas donde no se hacían, de Chaco y Formosa a Santiago, Salta y Tucumán. Si sembrás, Martín es el que te sigue la campaña.</p>
+        <p class="persona__intro">Quién te va a contestar</p>
+        <div class="persona__cab">
+          <div class="persona__foto" role="img" aria-label="Martín Recalde"></div>
+          <div>
+            <h3>Martín Recalde</h3>
+            <p class="persona__rol">Ingeniero agrónomo. Socio de Prome AgroNegocios y de la Regional Aapresid Montecristo.</p>
+          </div>
         </div>
+        <p class="persona__bio">Hace diez años que Prome lleva cultivos de especialidad a zonas donde no se hacían, de Chaco y Formosa a Santiago, Salta y Tucumán. Si sembrás, Martín es el que te sigue la campaña.</p>
       </div>
     </div>
   </section>
@@ -275,7 +281,10 @@
 </footer>
 
 <div class="barra" id="barra">
-  <a class="boton boton--barra" href="#" data-wa>Escribinos</a>
+  <a class="boton boton--barra" href="#" data-wa>
+    <svg class="ico-wa" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg>
+    <span>Escribinos</span>
+  </a>
 </div>
 
 <script src="script.js"></script>

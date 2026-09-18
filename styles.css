@@ -8,7 +8,8 @@
   --sans:"Almarai", system-ui, -apple-system, sans-serif;
   --ancho:70rem;
   --medida:44rem;
-  --barra-alto:4.75rem;
+  --verde-wa:#25D366;
+  --barra-alto:4.5rem;
 }
 
 *{box-sizing:border-box;}
@@ -45,6 +46,17 @@ p:last-child{margin-bottom:0;}
   background:var(--verde);
   fill:none;
   stroke:var(--blanco);
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.ico-wa{
+  width:1.5rem;
+  height:1.5rem;
+  flex:0 0 auto;
+  fill:none;
+  stroke:currentColor;
   stroke-width:2;
   stroke-linecap:round;
   stroke-linejoin:round;
@@ -91,7 +103,7 @@ p:last-child{margin-bottom:0;}
   font-family:var(--sans);
   font-weight:300;
   font-size:.8125rem;
-  letter-spacing:.14em;
+  letter-spacing:.08em;
   opacity:.85;
   margin-top:.25rem;
 }
@@ -244,17 +256,20 @@ h3{
    tamaños, incluido el celular: para tráfico frío una cara importa
    más en el teléfono que en escritorio. */
 .persona{
-  display:grid;
-  gap:1.25rem;
-  align-items:center;
   margin:3rem 0 0;
   padding:1.5rem;
   background:var(--hueso);
   max-width:var(--medida);
 }
+.persona__cab{
+  display:flex;
+  align-items:center;
+  gap:1.125rem;
+}
 .persona__foto{
-  width:7rem;
-  height:7rem;
+  flex:0 0 auto;
+  width:5.5rem;
+  height:5.5rem;
   background-color:rgba(48,121,47,.1);
   background-image:url("img/martin.webp");
   background-size:cover;
@@ -266,7 +281,7 @@ h3{
   font-weight:800;
   font-size:.9375rem;
   color:var(--verde);
-  margin:0 0 .625rem;
+  margin:0 0 1rem;
 }
 .persona h3{margin:0 0 .125rem;}
 .persona__rol{
@@ -275,7 +290,7 @@ h3{
   color:rgba(29,35,28,.65);
   margin:0 0 .75rem;
 }
-.persona__texto p:last-child{font-weight:300;margin:0;}
+.persona__bio{font-weight:300;margin:1.125rem 0 0;}
 
 /* ---------- Esquema de tres pasos ---------- */
 .flujo{
@@ -448,23 +463,28 @@ h3{
 /* ---------- Barra fija ---------- */
 .barra{
   position:fixed;
-  inset:auto 0 0 0;
-  background:var(--blanco);
-  border-top:1px solid rgba(29,35,28,.16);
-  padding:.75rem 1.375rem calc(.75rem + env(safe-area-inset-bottom));
+  right:1.125rem;
+  bottom:calc(1.125rem + env(safe-area-inset-bottom));
   z-index:15;
-  transition:transform .22s ease;
+  transition:transform .22s ease, opacity .22s ease;
 }
-.barra[hidden]{display:block;transform:translateY(110%);}
+/* Al llegar al cierre se va para abajo, no desaparece de golpe */
+.barra[hidden]{display:block;opacity:0;transform:translateY(150%);pointer-events:none;}
 .boton--barra{
-  display:block;
-  text-align:center;
-  background:var(--verde);
-  border-color:var(--verde);
-  max-width:var(--ancho);
-  margin:0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:.5625rem;
+  /* Verde de WhatsApp con texto e ícono oscuros. Blanco sobre este verde
+     da 2:1 y no llega a AA; el oscuro da 7.7:1 y el color se sigue
+     leyendo como WhatsApp. */
+  background:var(--verde-wa);
+  border-color:var(--verde-wa);
+  color:var(--negro);
+  border-radius:999px;
+  padding:.8125rem 1.25rem;
+  box-shadow:0 .375rem 1.125rem rgba(29,35,28,.28);
 }
-.boton--barra:focus-visible{outline-color:var(--verde);}
+.boton--barra:focus-visible{outline-color:var(--negro);}
 
 /* ---------- Pie ---------- */
 .pie{
@@ -508,8 +528,8 @@ h3{
 
 @media (min-width:48rem){
   body{font-size:1.125rem;}
-  .persona{grid-template-columns:auto 1fr;gap:1.75rem;padding:1.75rem 2rem;}
-  .persona__foto{width:8.5rem;height:8.5rem;}
+  .persona{padding:1.75rem 2rem;}
+  .persona__foto{width:7rem;height:7rem;}
   /* En horizontal, la línea se vuelve flecha entre pasos */
   .flujo{grid-template-columns:repeat(3,1fr);gap:3.5rem;}
   .flujo__paso + .flujo__paso::before{
