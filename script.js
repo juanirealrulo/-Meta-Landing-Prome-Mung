@@ -33,6 +33,9 @@
       ? 'Hola, tengo interés en el ' + plan + ' de poroto mung.'
       : MENSAJE;
     botones[i].setAttribute('href', 'https://wa.me/' + TELEFONO + '?text=' + encodeURIComponent(texto));
+    // WhatsApp abre en pestaña nueva. Además de dejar la página atrás,
+    // evita que la navegación corte el pedido del píxel antes de salir.
+    botones[i].setAttribute('target', '_blank');
     botones[i].setAttribute('rel', 'noopener');
     // Avisa al píxel que alguien salió hacia WhatsApp. Sin esto no hay
     // forma de separar la fuga del anuncio de la fuga de la página.
