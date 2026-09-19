@@ -100,14 +100,12 @@ p:last-child{margin-bottom:0;}
   line-height:1.3;
   margin:0 0 1.5rem;
 }
-.marca span{
-  display:block;
-  font-family:var(--sans);
+.cobertura{
   font-weight:300;
-  font-size:.75rem;
+  font-size:.8125rem;
   letter-spacing:.12em;
-  opacity:.78;
-  margin-top:.25rem;
+  opacity:.8;
+  margin-top:.5rem;
 }
 .portada h1{
   font-family:var(--serif);
@@ -490,7 +488,7 @@ h3{
   gap:.5625rem;
 }
 .seccion--cierre .boton{margin-top:2rem;padding:1.1875rem 2.25rem;font-size:1.0625rem;}
-.portada .boton{margin-top:1.75rem;}
+.portada .boton{margin-top:2.5rem;}
 .boton--plan{
   display:block;
   width:100%;
