@@ -26,7 +26,7 @@ body{
   background:var(--blanco);
 }
 
-p{margin:0 0 1rem;}
+p{margin:0 0 1rem;text-wrap:pretty;}
 p:last-child{margin-bottom:0;}
 
 .simbolos{position:absolute;width:0;height:0;overflow:hidden;}
@@ -104,9 +104,9 @@ p:last-child{margin-bottom:0;}
   display:block;
   font-family:var(--sans);
   font-weight:300;
-  font-size:.8125rem;
-  letter-spacing:.08em;
-  opacity:.85;
+  font-size:.75rem;
+  letter-spacing:.12em;
+  opacity:.78;
   margin-top:.25rem;
 }
 .portada h1{
@@ -135,6 +135,8 @@ p:last-child{margin-bottom:0;}
 .seccion--cierre .col{max-width:34rem;}
 .seccion--cierre h2{font-size:2.25rem;margin-bottom:1.25rem;}
 .seccion--cierre p{margin-left:auto;margin-right:auto;max-width:40ch;}
+
+h1,h2,h3{text-wrap:balance;}
 
 h2{
   font-family:var(--serif);
@@ -213,8 +215,8 @@ h3{
   font-size:.875rem;
   font-weight:300;
   color:var(--blanco);
-  opacity:.85;
-  margin:1rem 0 0;
+  opacity:.8;
+  margin:.625rem 0 0;
 }
 
 /* ---------- Bloques anchos ----------
@@ -480,6 +482,12 @@ h3{
   background:var(--negro);
   color:var(--blanco);
   border:2px solid var(--negro);
+}
+.boton--icono{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5625rem;
 }
 .seccion--cierre .boton{margin-top:2rem;padding:1.1875rem 2.25rem;font-size:1.0625rem;}
 .portada .boton{margin-top:1.75rem;}

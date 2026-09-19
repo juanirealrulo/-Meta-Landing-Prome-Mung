@@ -67,15 +67,31 @@
   window.addEventListener('resize', avance, { passive: true });
   avance();
 
-  // 4. Ocultar la barra fija cuando el cierre ya está en pantalla,
-  //    para que no queden dos botones iguales encimados.
+  // 4. El flotante aparece recién cuando la portada salió de pantalla y se
+  //    esconde otra vez sobre el cierre. Así nunca convive con otro botón
+  //    de contacto y el primer pantallazo queda con una sola vía de acción.
   var barra = document.getElementById('barra');
   var cierre = document.getElementById('cta-final');
+  var portada = document.querySelector('.portada');
 
-  if ('IntersectionObserver' in window && barra && cierre) {
-    var observador = new IntersectionObserver(function (entradas) {
-      barra.hidden = entradas[0].isIntersecting;
-    }, { rootMargin: '0px 0px -80px 0px' });
-    observador.observe(cierre);
+  if ('IntersectionObserver' in window && barra && cierre && portada) {
+    var enPortada = true;
+    var enCierre = false;
+
+    function resolver() {
+      barra.hidden = enPortada || enCierre;
+    }
+
+    new IntersectionObserver(function (entradas) {
+      enPortada = entradas[0].isIntersecting;
+      resolver();
+    }, { threshold: 0 }).observe(portada);
+
+    new IntersectionObserver(function (entradas) {
+      enCierre = entradas[0].isIntersecting;
+      resolver();
+    }, { rootMargin: '0px 0px -80px 0px' }).observe(cierre);
+
+    resolver();
   }
 })();
