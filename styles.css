@@ -81,14 +81,15 @@ p:last-child{margin-bottom:0;}
 
 /* ---------- Portada ---------- */
 .portada{
-  /* Fondo: img/portada.webp. Va detrás del velo verde, así que no cambia
-     el alto de la banda en ningún tamaño. Si el archivo no existe todavía,
-     el navegador cae al color y la banda se ve igual de bien.
-     El velo va al 84%: es el valor más bajo que deja el texto chico por
-     encima de 4.5:1 de contraste sobre el píxel más claro de la foto.
-     Bajarlo muestra más la imagen pero incumple AA. */
-  background-color:var(--verde);
-  background-image:linear-gradient(rgba(48,121,47,.84), rgba(48,121,47,.84)), url("img/portada.webp");
+  /* Fondo: img/portada.webp. Va detrás del velo, así que no cambia el alto
+     de la banda en ningún tamaño. Si el archivo no existe todavía, el
+     navegador cae al color y la banda se ve igual de bien.
+     El velo es un verde más oscuro que el de marca, al 90%. Contra ese
+     fondo el blanco puro rinde 7.7:1 en lugar de 5:1, y ese excedente es
+     lo que después permite bajar la bajada y el apunte sin salirse de AA.
+     De paso apaga la textura de la foto, que competía con la lectura. */
+  background-color:#2a5f29;
+  background-image:linear-gradient(rgba(42,95,41,.9), rgba(42,95,41,.9)), url("img/portada.webp");
   background-size:cover;
   background-position:center;
   color:var(--blanco);
@@ -118,6 +119,9 @@ p:last-child{margin-bottom:0;}
   font-weight:300;
   font-size:1.0625rem;
   line-height:1.6;
+  /* 88% de blanco sobre el velo oscuro: 6:1, holgado sobre el mínimo.
+     El titular queda como el único blanco pleno del bloque. */
+  color:rgba(255,255,255,.88);
   margin:0;
   max-width:34ch;
 }
@@ -212,8 +216,7 @@ h3{
 .portada .apunte{
   font-size:.875rem;
   font-weight:300;
-  color:var(--blanco);
-  opacity:.8;
+  color:rgba(255,255,255,.78);
   margin:.625rem 0 0;
 }
 
