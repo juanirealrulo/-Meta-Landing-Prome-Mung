@@ -231,7 +231,7 @@ h3{
      a la vez. El 78% hace que la segunda asome y se note que hay más. */
   display:grid;
   grid-auto-flow:column;
-  grid-auto-columns:78%;
+  grid-auto-columns:72%;
   gap:.1875rem;
   margin:0 0 2.5rem;
   overflow-x:auto;
@@ -240,6 +240,18 @@ h3{
   scrollbar-width:none;
 }
 .contraste::-webkit-scrollbar{display:none;}
+/* La guía se va sola en cuanto el bloque se arrastró una vez */
+.contraste__guia{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:.8125rem;
+  letter-spacing:.04em;
+  color:var(--verde);
+  text-align:right;
+  margin:0 0 .5rem;
+  transition:opacity .2s ease;
+}
+.contraste__guia[hidden]{display:block;opacity:0;}
 .contraste__lado{
   padding:1.375rem 1.25rem;
   scroll-snap-align:start;
@@ -627,6 +639,7 @@ h3{
     grid-template-columns:1fr 1fr;
     overflow-x:visible;
   }
+  .contraste__guia{display:none;}
   .tarjetas{grid-template-columns:repeat(3,1fr);gap:1rem;}
   .chequeo{grid-template-columns:repeat(3,1fr);gap:1.75rem;align-items:start;}
   .chequeo li{align-items:start;}

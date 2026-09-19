@@ -67,7 +67,18 @@
   window.addEventListener('resize', avance, { passive: true });
   avance();
 
-  // 4. El flotante aparece recién cuando la portada salió de pantalla y se
+  // 4. Guía del comparador. Solo se muestra hasta que el bloque se arrastra
+  //    por primera vez, así el aviso no queda ocupando lugar para siempre.
+  var comparador = document.getElementById('contraste');
+  var guia = document.getElementById('contraste-guia');
+
+  if (comparador && guia) {
+    comparador.addEventListener('scroll', function () {
+      if (comparador.scrollLeft > 8) guia.hidden = true;
+    }, { passive: true, once: false });
+  }
+
+  // 5. El flotante aparece recién cuando la portada salió de pantalla y se
   //    esconde otra vez sobre el cierre. Así nunca convive con otro botón
   //    de contacto y el primer pantallazo queda con una sola vía de acción.
   var barra = document.getElementById('barra');
