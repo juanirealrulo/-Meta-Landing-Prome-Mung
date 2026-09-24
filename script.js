@@ -7,7 +7,7 @@
   // Píxel de Meta. Pegar acá los dígitos del ID y listo, no hay que tocar
   // nada más. Mientras esté vacío el píxel no carga y la página funciona
   // igual, así que no queda en un estado roto si se publica sin él.
-  var PIXEL = '';
+  var PIXEL = '1609106020720947';
   var MENSAJE = 'Hola, vi el anuncio del poroto mung y quiero saber si entra en mi planteo.';
 
   // 1. Píxel de Meta, solo si hay ID cargado.
