@@ -6,9 +6,12 @@
   --blanco:#ffffff;
   --serif:"Libre Baskerville", Georgia, serif;
   --sans:"Almarai", system-ui, -apple-system, sans-serif;
+  /* Solo para cifras. Las de Almarai quedan desparejas en tamaño grande. */
+  --cifras:"Archivo", "Arial Narrow", system-ui, sans-serif;
   --ancho:70rem;
   --medida:44rem;
-  --barra-alto:4.75rem;
+  --verde-wa:#25D366;
+  --barra-alto:4.5rem;
 }
 
 *{box-sizing:border-box;}
@@ -23,7 +26,7 @@ body{
   background:var(--blanco);
 }
 
-p{margin:0 0 1rem;}
+p{margin:0 0 1rem;text-wrap:pretty;}
 p:last-child{margin-bottom:0;}
 
 .simbolos{position:absolute;width:0;height:0;overflow:hidden;}
@@ -49,7 +52,17 @@ p:last-child{margin-bottom:0;}
   stroke-linecap:round;
   stroke-linejoin:round;
 }
-.ico--grande{width:3.25rem;height:3.25rem;padding:.625rem;}
+
+.ico-wa{
+  width:1.5rem;
+  height:1.5rem;
+  flex:0 0 auto;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 
 /* ---------- Indicador de avance ---------- */
 .progreso{
@@ -79,22 +92,20 @@ p:last-child{margin-bottom:0;}
   background-size:cover;
   background-position:center;
   color:var(--blanco);
-  padding:3.25rem 0 3rem;
+  padding:2.5rem 0 2.75rem;
 }
 .marca{
   font-family:var(--serif);
   font-size:1rem;
   line-height:1.3;
-  margin:0 0 2.5rem;
+  margin:0 0 1.5rem;
 }
-.marca span{
-  display:block;
-  font-family:var(--sans);
+.cobertura{
   font-weight:300;
   font-size:.8125rem;
-  letter-spacing:.14em;
-  opacity:.85;
-  margin-top:.25rem;
+  letter-spacing:.12em;
+  opacity:.8;
+  margin-top:.5rem;
 }
 .portada h1{
   font-family:var(--serif);
@@ -123,6 +134,8 @@ p:last-child{margin-bottom:0;}
 .seccion--cierre h2{font-size:2.25rem;margin-bottom:1.25rem;}
 .seccion--cierre p{margin-left:auto;margin-right:auto;max-width:40ch;}
 
+h1,h2,h3{text-wrap:balance;}
+
 h2{
   font-family:var(--serif);
   font-weight:700;
@@ -142,24 +155,57 @@ h3{
 }
 
 .lead{
-  max-width:42ch;
-  font-size:1.125rem;
-  line-height:1.55;
-  margin:0 0 1.75rem;
   max-width:40ch;
+  font-size:1.125rem;
+  font-weight:300;
+  line-height:1.5;
+  margin:0 0 1.75rem;
 }
 
-/* ---------- Foto lateral ---------- */
 .par{display:grid;gap:2rem;}
-.foto{display:none;}
 
-/* ---------- Lista corrida de requisitos ---------- */
-.lista--linea{margin:0;max-width:62ch;}
-.lista--linea li{margin-bottom:.625rem;font-weight:300;}
+/* ---------- Chequeo de requisitos ----------
+   Tres columnas, en paralelo con las tarjetas de arriba. El tilde va en
+   trazo verde sin tile, para no competir con los íconos de la sección. */
+.chequeo{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:1.5rem;
+}
+.chequeo li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  column-gap:.625rem;
+  align-items:center;
+}
+.tic{
+  width:1.375rem;
+  height:1.375rem;
+  fill:none;
+  stroke:var(--verde);
+  stroke-width:2.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.chequeo b{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:1rem;
+  line-height:1.3;
+}
+.chequeo p{
+  grid-column:1 / -1;
+  font-weight:300;
+  font-size:.9375rem;
+  line-height:1.5;
+  margin:.375rem 0 0;
+}
 .sub{
   font-family:var(--sans);
   font-weight:800;
-  font-size:.9375rem;
+  font-size:1.0625rem;
   color:var(--verde);
   margin:2.5rem 0 1rem;
 }
@@ -167,15 +213,83 @@ h3{
   font-size:.875rem;
   font-weight:300;
   color:var(--blanco);
-  opacity:.85;
-  margin:1rem 0 0;
+  opacity:.8;
+  margin:.625rem 0 0;
 }
 
 /* ---------- Bloques anchos ----------
    Sin las fotos laterales, el bloque oscuro y el gráfico se estiran a
    toda la columna. La medida de lectura la sostiene el párrafo, no la caja. */
-.par__cuerpo{display:grid;gap:2.5rem;align-content:start;}
 
+
+/* ---------- Contraste: el mismo lote, con y sin cultivo ----------
+   Es lo primero que aparece después de la portada, así que carga el
+   argumento en forma de bloque y no de párrafo. */
+.contraste{
+  /* En celular los dos lados van uno al lado del otro y se arrastran.
+     Un comparador apilado deja de comparar, hay que ver las dos columnas
+     a la vez. El 78% hace que la segunda asome y se note que hay más. */
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:72%;
+  gap:.1875rem;
+  margin:0 0 2.5rem;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
+}
+.contraste::-webkit-scrollbar{display:none;}
+/* La guía se va sola en cuanto el bloque se arrastró una vez */
+.contraste__guia{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:.8125rem;
+  letter-spacing:.04em;
+  color:var(--verde);
+  text-align:right;
+  margin:0 0 .5rem;
+  transition:opacity .2s ease;
+}
+.contraste__guia[hidden]{display:block;opacity:0;}
+.contraste__lado{
+  padding:1.375rem 1.25rem;
+  scroll-snap-align:start;
+}
+.contraste__lado--vacio{background:var(--hueso);}
+.contraste__lado--mung{background:var(--verde);color:var(--blanco);}
+.contraste h3{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:.9375rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin:0 0 1rem;
+}
+.contraste__lado--vacio h3{color:rgba(29,35,28,.7);}
+.contraste__lado--mung h3{color:var(--blanco);}
+.contraste__lista{list-style:none;margin:0;padding:0;}
+.contraste__lista li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  column-gap:.5rem;
+  align-items:start;
+  font-size:1.0625rem;
+  line-height:1.35;
+  margin-bottom:.75rem;
+}
+.contraste__lista li:last-child{margin-bottom:0;}
+.marca-i{
+  width:1.125rem;
+  height:1.125rem;
+  margin-top:.1875rem;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.contraste__lado--vacio .marca-i{color:rgba(29,35,28,.45);}
 
 /* ---------- Gráfico del ciclo ---------- */
 .ciclo{margin:0;}
@@ -227,7 +341,6 @@ h3{
    Abajo de 40rem los ítems van apilados y el tile quedaba solo en su
    renglón con todo el ancho vacío a la derecha. Acá el título sube al
    lado del ícono y el texto corre debajo a todo el ancho. */
-.trio__item,
 .tarjeta,
 .flujo__paso{
   display:grid;
@@ -235,58 +348,43 @@ h3{
   column-gap:1rem;
   align-items:center;
 }
-.trio__item .ico,
 .tarjeta .ico,
 .flujo__paso .ico{grid-column:1;grid-row:1;margin:0;}
-.trio__item h3,
-.tarjeta h3,
-.flujo__paso h3{grid-column:2;grid-row:1;margin:0;}
-.trio__item p,
-.tarjeta p,
-.flujo__paso p{grid-column:1 / -1;margin:.75rem 0 0;}
+.tarjeta h3{grid-column:2;grid-row:1;margin:0;}
+.tarjeta p{grid-column:1 / -1;margin:.75rem 0 0;}
+.flujo__paso p{grid-column:2;grid-row:1;margin:0;}
 
 /* ---------- Quién te atiende ----------
    Es la única prueba que tiene la página. Se muestra en todos los
    tamaños, incluido el celular: para tráfico frío una cara importa
    más en el teléfono que en escritorio. */
 .persona{
-  display:grid;
-  gap:1.25rem;
-  align-items:center;
   margin:3rem 0 0;
   padding:1.5rem;
   background:var(--hueso);
   max-width:var(--medida);
 }
+.persona__cab{
+  display:flex;
+  align-items:center;
+  gap:1.125rem;
+}
 .persona__foto{
-  width:7rem;
-  height:7rem;
+  flex:0 0 auto;
+  width:5.5rem;
+  height:5.5rem;
   background-color:rgba(48,121,47,.1);
+  background-image:url("img/martin.webp");
   background-size:cover;
   background-position:center;
   border-radius:50%;
-}
-.persona__foto[data-rot]{
-  border:2px dashed rgba(48,121,47,.5);
-  display:grid;
-  align-content:center;
-  text-align:center;
-  padding:.5rem;
-}
-.persona__foto[data-rot]::before{
-  content:attr(data-rot);
-  font-family:var(--sans);
-  font-weight:700;
-  font-size:.75rem;
-  line-height:1.3;
-  color:var(--verde);
 }
 .persona__intro{
   font-family:var(--sans);
   font-weight:800;
   font-size:.9375rem;
   color:var(--verde);
-  margin:0 0 .625rem;
+  margin:0 0 1rem;
 }
 .persona h3{margin:0 0 .125rem;}
 .persona__rol{
@@ -295,7 +393,7 @@ h3{
   color:rgba(29,35,28,.65);
   margin:0 0 .75rem;
 }
-.persona__texto p:last-child{font-weight:300;margin:0;}
+.persona__bio{font-weight:300;margin:1.125rem 0 0;}
 
 /* ---------- Esquema de tres pasos ---------- */
 .flujo{
@@ -307,8 +405,7 @@ h3{
 }
 .flujo__paso{position:relative;}
 .flujo__paso .ico{margin:0 0 .875rem;}
-.flujo__paso h3{color:var(--verde);margin:0 0 .375rem;}
-.flujo__paso p{font-weight:300;margin:0;max-width:30ch;}
+.flujo__paso p{margin:0;max-width:30ch;}
 /* En vertical, una línea une el tile de un paso con el siguiente */
 .flujo__paso + .flujo__paso::before{
   content:"";
@@ -333,35 +430,13 @@ h3{
   padding:1.25rem 1.125rem 1.375rem;
 }
 .tarjeta .ico{margin:0 0 .875rem;}
-.tarjeta h3{color:var(--verde);margin:0 0 .375rem;}
+.tarjeta h3{font-size:1.0625rem;margin:0 0 .375rem;}
 .tarjeta p{
   font-weight:300;
   font-size:.9375rem;
   line-height:1.55;
   margin:0;
 }
-
-/* ---------- Destacado ---------- */
-.destacado{
-  margin:3rem 0 0;
-  padding:1.625rem 1.375rem;
-  background:var(--negro);
-  color:var(--hueso);
-}
-.destacado h3{color:var(--verde-vivo);}
-.destacado p{font-weight:300;margin:0 0 .875rem;max-width:62ch;}
-.destacado p:last-child{margin-bottom:0;}
-
-/* ---------- Trío raíces, granos, renta ---------- */
-.trio{display:grid;gap:0;}
-.trio__item{
-  padding:1.5rem 0;
-  border-top:1px solid rgba(29,35,28,.22);
-}
-.trio__item:last-child{border-bottom:1px solid rgba(29,35,28,.22);}
-.trio__item .ico{margin:0 0 .75rem;}
-.trio__item h3{color:var(--verde);margin-bottom:.375rem;}
-.trio__item p{font-weight:300;margin:0;max-width:44ch;}
 
 /* ---------- Comparador de programas ---------- */
 .seccion--comparador{background:var(--negro);color:var(--hueso);}
@@ -397,9 +472,11 @@ h3{
   margin:0 0 .625rem;
 }
 .programa__precio{
-  font-family:var(--sans);
-  font-weight:800;
-  font-size:2rem;
+  font-family:var(--cifras);
+  font-weight:700;
+  font-size:2.125rem;
+  letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;
   line-height:1;
   color:var(--blanco);
   margin:0 0 .1875rem;
@@ -473,8 +550,14 @@ h3{
   color:var(--blanco);
   border:2px solid var(--negro);
 }
+.boton--icono{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5625rem;
+}
 .seccion--cierre .boton{margin-top:2rem;padding:1.1875rem 2.25rem;font-size:1.0625rem;}
-.portada .boton{margin-top:1.75rem;}
+.portada .boton{margin-top:2.5rem;}
 .boton--plan{
   display:block;
   width:100%;
@@ -490,23 +573,28 @@ h3{
 /* ---------- Barra fija ---------- */
 .barra{
   position:fixed;
-  inset:auto 0 0 0;
-  background:var(--blanco);
-  border-top:1px solid rgba(29,35,28,.16);
-  padding:.75rem 1.375rem calc(.75rem + env(safe-area-inset-bottom));
+  right:1.125rem;
+  bottom:calc(1.125rem + env(safe-area-inset-bottom));
   z-index:15;
-  transition:transform .22s ease;
+  transition:transform .22s ease, opacity .22s ease;
 }
-.barra[hidden]{display:block;transform:translateY(110%);}
+/* Al llegar al cierre se va para abajo, no desaparece de golpe */
+.barra[hidden]{display:block;opacity:0;transform:translateY(150%);pointer-events:none;}
 .boton--barra{
-  display:block;
-  text-align:center;
-  background:var(--verde);
-  border-color:var(--verde);
-  max-width:var(--ancho);
-  margin:0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:.5625rem;
+  /* Verde de WhatsApp con texto e ícono oscuros. Blanco sobre este verde
+     da 2:1 y no llega a AA; el oscuro da 7.7:1 y el color se sigue
+     leyendo como WhatsApp. */
+  background:var(--verde-wa);
+  border-color:var(--verde-wa);
+  color:var(--negro);
+  border-radius:999px;
+  padding:.8125rem 1.25rem;
+  box-shadow:0 .375rem 1.125rem rgba(29,35,28,.28);
 }
-.boton--barra:focus-visible{outline-color:var(--verde);}
+.boton--barra:focus-visible{outline-color:var(--negro);}
 
 /* ---------- Pie ---------- */
 .pie{
@@ -532,34 +620,36 @@ h3{
 
 /* ---------- Pantallas grandes ---------- */
 @media (max-width:29.99rem){
-  .ciclo__linea{flex-direction:column;}
-  .ciclo__hito{max-width:none;border-left:0;border-top:4px solid var(--verde-vivo);}
+  .ciclo__tramo,.ciclo__hito{padding:.75rem .8125rem;}
+  .ciclo__hito{max-width:7.5rem;}
+  .ciclo__etiq{font-size:.75rem;}
+  .ciclo__dato{font-size:.9375rem;}
 }
 
 @media (min-width:40rem){
-  .trio__item,
   .tarjeta,
   .flujo__paso{display:block;}
-  .trio__item .ico,
   .tarjeta .ico{margin:0 0 .875rem;}
   .flujo__paso .ico{margin:0 0 .875rem;}
-  .trio__item h3,
   .tarjeta h3{margin:0 0 .375rem;}
-  .flujo__paso h3{margin:0 0 .375rem;}
-  .trio__item p,
   .tarjeta p,
   .flujo__paso p{margin:0;}
+  .contraste{
+    grid-auto-flow:row;
+    grid-template-columns:1fr 1fr;
+    overflow-x:visible;
+  }
+  .contraste__guia{display:none;}
   .tarjetas{grid-template-columns:repeat(3,1fr);gap:1rem;}
-  .tarjetas--dos{grid-template-columns:repeat(2,1fr);}
-  .trio{grid-template-columns:repeat(3,1fr);gap:1.75rem;}
-  .trio__item{border-top:2px solid var(--verde);padding:1.125rem 0 0;}
-  .trio__item:last-child{border-bottom:0;}
+  .chequeo{grid-template-columns:repeat(3,1fr);gap:1.75rem;align-items:start;}
+  .chequeo li{align-items:start;}
+  .tic{margin-top:.125rem;}
 }
 
 @media (min-width:48rem){
   body{font-size:1.125rem;}
-  .persona{grid-template-columns:auto 1fr;gap:1.75rem;padding:1.75rem 2rem;}
-  .persona__foto{width:8.5rem;height:8.5rem;}
+  .persona{padding:1.75rem 2rem;}
+  .persona__foto{width:7rem;height:7rem;}
   /* En horizontal, la línea se vuelve flecha entre pasos */
   .flujo{grid-template-columns:repeat(3,1fr);gap:3.5rem;}
   .flujo__paso + .flujo__paso::before{
@@ -580,27 +670,22 @@ h3{
     transform:rotate(45deg);
   }
   .col{padding:0 2.5rem;}
+  /* El flotante acompaña el borde de la columna de texto. En pantallas
+     angostas gana el mínimo y queda pegado al margen, como antes. */
+  .barra{
+    right:max(1.5rem, calc((100% - var(--ancho)) / 2 + 2.5rem));
+    bottom:calc(1.75rem + env(safe-area-inset-bottom));
+  }
   .portada{padding:5rem 0 4.5rem;}
   .portada h1{font-size:3.25rem;}
   .bajada{font-size:1.1875rem;max-width:40ch;}
   .seccion{padding:5rem 0;}
   h2{font-size:2.125rem;}
+  .lead{font-size:1.3125rem;line-height:1.45;}
   .seccion--cierre h2{font-size:2.625rem;}
-  .destacado{padding:2rem 2.25rem;}
-  .trio{gap:2.5rem;}
 }
 
 @media (min-width:60rem){
-  .par{grid-template-columns:minmax(0,1fr) 19rem;gap:2.5rem;align-items:stretch;}
-  .foto{
-    display:block;
-    height:100%;
-    min-height:20rem;
-    background-color:var(--verde);
-    background-image:url("img/cultivo-implantado.webp");
-    background-size:cover;
-    background-position:center;
-  }
   .ciclo__tramo,.ciclo__hito{padding:1.125rem 1.375rem;}
   .ciclo__hito{max-width:11rem;}
   .ciclo__dato{font-size:1.0625rem;}
@@ -609,6 +694,7 @@ h3{
   .programa dl{padding:1.625rem 1.625rem 0;}
   .programa__pie{padding:1.125rem 1.625rem 1.625rem;}
   .tarjetas{gap:1.5rem;}
+  .chequeo{gap:2.25rem;}
   .seccion{padding:5.5rem 0;}
 }
 

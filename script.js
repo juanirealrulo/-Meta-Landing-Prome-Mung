@@ -33,6 +33,9 @@
       ? 'Hola, tengo interés en el ' + plan + ' de poroto mung.'
       : MENSAJE;
     botones[i].setAttribute('href', 'https://wa.me/' + TELEFONO + '?text=' + encodeURIComponent(texto));
+    // WhatsApp abre en pestaña nueva. Además de dejar la página atrás,
+    // evita que la navegación corte el pedido del píxel antes de salir.
+    botones[i].setAttribute('target', '_blank');
     botones[i].setAttribute('rel', 'noopener');
     // Avisa al píxel que alguien salió hacia WhatsApp. Sin esto no hay
     // forma de separar la fuga del anuncio de la fuga de la página.
@@ -64,15 +67,42 @@
   window.addEventListener('resize', avance, { passive: true });
   avance();
 
-  // 4. Ocultar la barra fija cuando el cierre ya está en pantalla,
-  //    para que no queden dos botones iguales encimados.
+  // 4. Guía del comparador. Solo se muestra hasta que el bloque se arrastra
+  //    por primera vez, así el aviso no queda ocupando lugar para siempre.
+  var comparador = document.getElementById('contraste');
+  var guia = document.getElementById('contraste-guia');
+
+  if (comparador && guia) {
+    comparador.addEventListener('scroll', function () {
+      if (comparador.scrollLeft > 8) guia.hidden = true;
+    }, { passive: true, once: false });
+  }
+
+  // 5. El flotante aparece recién cuando la portada salió de pantalla y se
+  //    esconde otra vez sobre el cierre. Así nunca convive con otro botón
+  //    de contacto y el primer pantallazo queda con una sola vía de acción.
   var barra = document.getElementById('barra');
   var cierre = document.getElementById('cta-final');
+  var portada = document.querySelector('.portada');
 
-  if ('IntersectionObserver' in window && barra && cierre) {
-    var observador = new IntersectionObserver(function (entradas) {
-      barra.hidden = entradas[0].isIntersecting;
-    }, { rootMargin: '0px 0px -80px 0px' });
-    observador.observe(cierre);
+  if ('IntersectionObserver' in window && barra && cierre && portada) {
+    var enPortada = true;
+    var enCierre = false;
+
+    function resolver() {
+      barra.hidden = enPortada || enCierre;
+    }
+
+    new IntersectionObserver(function (entradas) {
+      enPortada = entradas[0].isIntersecting;
+      resolver();
+    }, { threshold: 0 }).observe(portada);
+
+    new IntersectionObserver(function (entradas) {
+      enCierre = entradas[0].isIntersecting;
+      resolver();
+    }, { rootMargin: '0px 0px -80px 0px' }).observe(cierre);
+
+    resolver();
   }
 })();

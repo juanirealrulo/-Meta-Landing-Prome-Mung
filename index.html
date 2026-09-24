@@ -6,13 +6,13 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#30792f">
 <title>Poroto mung en el NEA · Prome AgroNegocios</title>
-<meta name="description" content="Se pasó la fecha del girasol y el lote quedó libre. Todavía hay tiempo de sembrar poroto mung.">
-<meta property="og:title" content="¿Se te pasó la fecha del girasol?">
-<meta property="og:description" content="Todavía hay tiempo de sacarle una campaña a ese lote.">
+<meta name="description" content="Un lote sin asignar todavía puede dar una campaña. El poroto mung se siembra ahora y se cosecha en 90 días.">
+<meta property="og:title" content="Tu lote todavía puede dar una campaña">
+<meta property="og:description" content="Poroto mung. Se siembra ahora, se cosecha en 90 días y el lote queda libre para lo de verano.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Libre+Baskerville:wght@400;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -52,6 +52,17 @@
       <path d="M12 12l-8 -4.5" />
       <path d="M16 5.25l-8 4.5" />
     </symbol>
+    <symbol id="i-equis" viewBox="0 0 24 24">
+      <path d="M18 6l-12 12" />
+      <path d="M6 6l12 12" />
+    </symbol>
+    <symbol id="i-tic" viewBox="0 0 24 24">
+      <path d="M5 12l5 5l10 -10" />
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+      <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+    </symbol>
     <symbol id="i-camion" viewBox="0 0 24 24">
       <path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
       <path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -65,10 +76,13 @@
 
 <header class="portada">
   <div class="col">
-    <p class="marca">Prome AgroNegocios<span>Chaco · Formosa · Corrientes</span></p>
-    <h1>¿Se te pasó la fecha<br>del girasol?</h1>
-    <p class="bajada">Ese lote todavía puede dar una campaña. El poroto mung se siembra ahora, se cosecha en 90 días y lo deja libre para lo de verano.</p>
-    <a class="boton" href="#" data-wa>Escribinos por WhatsApp</a>
+    <p class="marca">Prome AgroNegocios</p>
+    <h1>Tu lote todavía<br>puede dar una campaña</h1>
+    <p class="bajada">El poroto mung se siembra ahora y se cosecha en 90 días.</p>
+    <a class="boton boton--icono" href="#" data-wa>
+      <svg class="ico-wa" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg>
+      <span>Escribinos por WhatsApp</span>
+    </a>
     <p class="apunte">Te contestamos si entra en tu planteo, sin compromiso.</p>
   </div>
 </header>
@@ -78,8 +92,29 @@
   <section id="gasto" class="seccion">
     <div class="col">
       <h2>Cambiá un gasto por una inversión</h2>
-      <p class="lead">El lote que queda sin asignar no queda quieto. Se llena de malezas y ese control se paga igual, salga lo que salga.</p>
-      <p>Con el mung, ese mismo gasto pasa a estar adentro de una campaña. El cultivo cierra el surco en 20 días y compite solo con la maleza, y al final del ciclo hay grano para vender en lugar de un lote que solo costó plata.</p>
+      <p class="lead">El lote que queda sin asignar no queda quieto. La diferencia está en qué hace mientras tanto.</p>
+
+      <p class="contraste__guia" id="contraste-guia">Deslizá para comparar →</p>
+      <div class="contraste" id="contraste">
+        <div class="contraste__lado contraste__lado--vacio">
+          <h3>Lote vacío</h3>
+          <ul class="contraste__lista">
+            <li><svg class="marca-i" aria-hidden="true" focusable="false"><use href="#i-equis"></use></svg>Pierde humedad</li>
+            <li><svg class="marca-i" aria-hidden="true" focusable="false"><use href="#i-equis"></use></svg>Se cubre de malezas</li>
+            <li><svg class="marca-i" aria-hidden="true" focusable="false"><use href="#i-equis"></use></svg>El control se paga igual</li>
+          </ul>
+        </div>
+        <div class="contraste__lado contraste__lado--mung">
+          <h3>Con poroto mung</h3>
+          <ul class="contraste__lista">
+            <li><svg class="marca-i" aria-hidden="true" focusable="false"><use href="#i-tic"></use></svg>Cobertura y raíces</li>
+            <li><svg class="marca-i" aria-hidden="true" focusable="false"><use href="#i-tic"></use></svg>Grano para vender</li>
+            <li><svg class="marca-i" aria-hidden="true" focusable="false"><use href="#i-tic"></use></svg>Renta en el mismo lote</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Con el mung, ese mismo gasto pasa a estar adentro de una campaña, y al final del ciclo hay grano para vender.</p>
 
       <figure class="ciclo">
         <figcaption>El ciclo termina antes de la siembra de verano</figcaption>
@@ -95,6 +130,8 @@
         </div>
         <p class="ciclo__nota">El lote hace dos campañas en lugar de una.</p>
       </figure>
+    </div>
+  </section>
 
   <section id="cultivo" class="seccion seccion--hueso">
     <div class="col">
@@ -102,12 +139,7 @@
       <p class="lead">Una legumbre de ciclo corto que se siembra en primavera y se trabaja con lo que ya tenés en el campo.</p>
 
       <div class="par">
-        <div class="tarjetas tarjetas--dos">
-          <div class="tarjeta">
-            <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-reloj"></use></svg>
-            <h3>Cosecha en 90 días</h3>
-            <p>Entra en primavera y sale a tiempo para sembrar lo de verano detrás.</p>
-          </div>
+        <div class="tarjetas">
           <div class="tarjeta">
             <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-cobertura"></use></svg>
             <h3>Cubre el suelo en 20 días</h3>
@@ -124,14 +156,25 @@
             <p>Se siembra y se cosecha con el equipo que ya usás. No hace falta nada especial.</p>
           </div>
         </div>
-        <div class="foto" role="presentation"></div>
       </div>
 
       <h3 class="sub">Entra en tu planteo si</h3>
-      <ul class="lista lista--linea">
-        <li>Estás en Chaco, Formosa o Corrientes</li>
-        <li>Tenés humedad en el perfil. Es un cultivo poco extractivo y no necesita un perfil tan cargado como uno largo</li>
-        <li>Te quedó un lote libre y la ventana de primavera sigue abierta en tu zona</li>
+      <ul class="chequeo">
+        <li>
+          <svg class="tic" aria-hidden="true" focusable="false"><use href="#i-tic"></use></svg>
+          <b>Estás en la zona</b>
+          <p>Chaco, Formosa, Corrientes o Misiones.</p>
+        </li>
+        <li>
+          <svg class="tic" aria-hidden="true" focusable="false"><use href="#i-tic"></use></svg>
+          <b>Tenés humedad en el perfil</b>
+          <p>No necesita estar tan cargado como para un cultivo largo.</p>
+        </li>
+        <li>
+          <svg class="tic" aria-hidden="true" focusable="false"><use href="#i-tic"></use></svg>
+          <b>Te quedó un lote libre</b>
+          <p>Se te pasó la fecha del girasol o hay superficie sin asignar, y la ventana sigue abierta.</p>
+        </li>
       </ul>
     </div>
   </section>
@@ -143,29 +186,28 @@
       <ol class="flujo">
         <li class="flujo__paso">
           <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-paquete"></use></svg>
-          <h3>Ponemos la semilla</h3>
-          <p>Y según el programa, el acompañamiento.</p>
+          <p>Ponemos la semilla y, según el programa, el acompañamiento.</p>
         </li>
         <li class="flujo__paso">
           <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-tractor"></use></svg>
-          <h3>Vos sembrás y cosechás</h3>
-          <p>En tu lote, con tu maquinaria.</p>
+          <p>Vos sembrás y cosechás en tu lote, con tu maquinaria.</p>
         </li>
         <li class="flujo__paso">
           <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-camion"></use></svg>
-          <h3>Compramos el grano</h3>
-          <p>Nos entregás la producción. Es el compromiso de los tres programas.</p>
+          <p>Compramos el grano, con el comprador cerrado desde antes de sembrar.</p>
         </li>
       </ol>
 
       <div class="persona">
-        <div class="persona__foto" data-rot="Foto de Martín" data-med="img/martin.webp · cuadrada 480 × 480"></div>
-        <div class="persona__texto">
-          <p class="persona__intro">El que aparece en el video es el que te contesta.</p>
-          <h3>Martín Recalde</h3>
-          <p class="persona__rol">Ingeniero agrónomo. Socio de Prome AgroNegocios y de la Regional Aapresid Montecristo.</p>
-          <p>Hace diez años que Prome lleva cultivos de especialidad a zonas donde no se hacían, de Chaco y Formosa a Santiago, Salta y Tucumán. Martín te va a preguntar la zona y la superficie, y con eso te dice si el cultivo entra en tu planteo. Si sembrás, es el que te sigue la campaña.</p>
+        <p class="persona__intro">Quién te va a contestar</p>
+        <div class="persona__cab">
+          <div class="persona__foto" role="img" aria-label="Martín Recalde"></div>
+          <div>
+            <h3>Martín Recalde</h3>
+            <p class="persona__rol">Ingeniero agrónomo. Socio de Prome AgroNegocios.</p>
+          </div>
         </div>
+        <p class="persona__bio">Hace diez años que Prome lleva cultivos de especialidad a zonas donde no se hacían, de Chaco y Formosa a Santiago, Salta y Tucumán. Si sembrás, Martín es el que te sigue la campaña.</p>
       </div>
     </div>
   </section>
@@ -173,7 +215,7 @@
   <section id="programas" class="seccion seccion--comparador">
     <div class="col">
       <h2>Tres formas de sembrarlo</h2>
-      <p class="lead">La semilla es la misma. Cambia lo que va con ella, cómo se paga y el acompañamiento.</p>
+      <p class="lead">La semilla es la misma. Cambia lo que va con ella, cómo se paga y el acompañamiento. En los tres, la producción se entrega a Prome.</p>
 
       <div class="comparador">
       <article id="canje" class="programa programa--destacado">
@@ -195,7 +237,6 @@
           <dd class="dd--vacio">No incluye.</dd>
         </dl>
         <footer class="programa__pie">
-          <p>Nos entregás la producción.</p>
           <a class="boton boton--plan" href="#" data-wa data-plan="canje dos por uno">Me interesa este plan</a>
         </footer>
       </article>
@@ -225,7 +266,6 @@
           </dd>
         </dl>
         <footer class="programa__pie">
-          <p>Nos entregás la producción.</p>
           <a class="boton boton--plan" href="#" data-wa data-plan="programa con seguimiento">Me interesa este plan</a>
         </footer>
       </article>
@@ -255,7 +295,6 @@
           </dd>
         </dl>
         <footer class="programa__pie">
-          <p>Nos entregás la producción.</p>
           <a class="boton boton--plan" href="#" data-wa data-plan="programa con seguimiento y biológicos">Me interesa este plan</a>
         </footer>
       </article>
@@ -267,7 +306,10 @@
     <div class="col col--angosta">
       <h2>La ventana no espera</h2>
       <p>Contanos la zona y la superficie. Te decimos si entra en tu planteo y con qué programa conviene.</p>
-      <a class="boton" id="cta-final" href="#" data-wa>Escribinos por WhatsApp</a>
+      <a class="boton boton--icono" id="cta-final" href="#" data-wa>
+      <svg class="ico-wa" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg>
+      <span>Escribinos por WhatsApp</span>
+    </a>
     </div>
   </section>
 
@@ -276,12 +318,16 @@
 <footer class="pie">
   <div class="col">
     <p>Prome AgroNegocios</p>
+    <p class="cobertura">Chaco · Formosa · Corrientes · Misiones</p>
     <p class="lema"><b>Sembrá</b> con estrategia</p>
   </div>
 </footer>
 
 <div class="barra" id="barra">
-  <a class="boton boton--barra" href="#" data-wa>Escribinos</a>
+  <a class="boton boton--barra" href="#" data-wa>
+    <svg class="ico-wa" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg>
+    <span>Escribinos</span>
+  </a>
 </div>
 
 <script src="script.js"></script>
